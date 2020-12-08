@@ -13,6 +13,7 @@ import cn.itcast.entity.FoodType;
 import cn.itcast.factory.BeanFactory;
 import cn.itcast.service.IFoodTypeService;
 import cn.itcast.service.impl.FoodTypeService;
+import cn.itcast.utils.WebUtils;
 
 /**
  * 4.菜系管理Servlet开发
@@ -82,24 +83,10 @@ public class FoodTypeServlet extends HttpServlet {
 			}
 			//转发
 //			request.getRequestDispatcher(uri).forward(request, response);
-			goTo(request, response,uri);
+			WebUtils.goTo(request, response,uri);
 	}
 
-	/**
-	 * 跳转的通用方法
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void goTo(HttpServletRequest request, HttpServletResponse response,Object uri)
-			throws ServletException, IOException {
-		if(uri instanceof RequestDispatcher){
-			((RequestDispatcher)uri).forward(request, response);
-		} else if(uri instanceof String){
-			response.sendRedirect(request.getContextPath()+uri);
-		}
-	}
+	
 	
 	//b.菜系列表展示
 	public void list(HttpServletRequest request, HttpServletResponse response)
@@ -117,7 +104,7 @@ public class FoodTypeServlet extends HttpServlet {
 				e.printStackTrace();
 				uri = "/error/error.jsp";
 			}
-			goTo(request, response,uri);
+			WebUtils.goTo(request, response,uri);
 	}
 
 //	c.进入更新页面
@@ -137,7 +124,7 @@ public class FoodTypeServlet extends HttpServlet {
 				e.printStackTrace();
 				uri = "/error/error.jsp";
 			}
-			goTo(request, response,uri);
+			WebUtils.goTo(request, response,uri);
 	}
 	
 	//d.删除
@@ -154,7 +141,7 @@ public class FoodTypeServlet extends HttpServlet {
 			uri = "/error/error.jsp";
 		}
 		//转发
-		goTo(request, response,uri);
+		WebUtils.goTo(request, response,uri);
 		
 	}
 	
@@ -178,7 +165,7 @@ public class FoodTypeServlet extends HttpServlet {
 		}
 		//转发
 //		request.getRequestDispatcher(uri).forward(request, response);
-		goTo(request, response,uri);
+		WebUtils.goTo(request, response,uri);
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

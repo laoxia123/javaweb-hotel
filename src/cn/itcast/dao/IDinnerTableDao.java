@@ -5,7 +5,7 @@ import java.util.List;
 import cn.itcast.entity.DinnerTable;
 import cn.itcast.entity.TableStatus;
 
-public interface IDinnerTable {
+public interface IDinnerTableDao {
 	/**
 	 * 根据预定状态查询
 	 * @return
